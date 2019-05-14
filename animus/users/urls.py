@@ -2,7 +2,7 @@ from django.urls import path
 
 from rest_framework.routers import DefaultRouter
 
-from animus.users.views import UserViewSet, UserCreateViewSet
+from animus.users.api.viewsets import UserViewSet, UserCreateViewSet
 
 
 router = DefaultRouter()
