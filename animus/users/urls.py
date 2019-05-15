@@ -10,4 +10,3 @@ router.register(r'users', UserViewSet)
 router.register(r'users', UserCreateViewSet)
 
 app_name = "users"
-urlpatterns = router.urls
