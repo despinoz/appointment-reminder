@@ -7,17 +7,19 @@ from django.views import defaults as default_views
 from rest_framework.routers import DefaultRouter
 
 from animus.users.urls import router as usersRouter
+from animus.patients.urls import router as patientsRouter
 
 
 router = DefaultRouter()
 router.registry.extend(usersRouter.registry)
+router.registry.extend(patientsRouter.registry)
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
-    path("api/", include(router.urls)),
+    path("api/v1/", include(router.urls)),
     
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),

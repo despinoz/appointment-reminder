@@ -20,6 +20,21 @@ class BaseModel(TimeStampedModel):
         abstract = True
 
 
+class BaseUUIDModel(TimeStampedModel):
+    """
+    BaseUUIDModel inherits from models.TimeStampedModel and implements the
+    following fields for
+    base information:
+        * id which is a UUIDField
+        * modified [from TimeStampedModel]
+        * created [from TimeStampedModel]
+    """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    
+    class Meta:
+        abstract = True
+
+
 class SoftDeleteBaseModel(BaseModel, SoftDeletableModel):
 
     class Meta:

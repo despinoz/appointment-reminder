@@ -71,6 +71,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "animus.users.apps.UsersAppConfig",
     "animus.core.apps.CoreConfig",
+    "animus.patients.apps.PatientsConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
