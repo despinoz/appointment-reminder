@@ -9,11 +9,13 @@ from rest_framework_simplejwt import views as jwt_views
 
 from animus.users.urls import router as usersRouter
 from animus.patients.urls import router as patientsRouter
+from animus.providers.urls import router as providersRouter
 
 
 router = DefaultRouter()
 router.registry.extend(usersRouter.registry)
 router.registry.extend(patientsRouter.registry)
+router.registry.extend(providersRouter.registry)
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),

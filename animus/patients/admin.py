@@ -12,6 +12,5 @@ class PatientAdminForm(forms.ModelForm):
 class PatientAdmin(admin.ModelAdmin):
     form = PatientAdminForm
     list_display = ['name', 'last_name_1', 'last_name_2', 'email', 'phone', 'cellphone', 'dni']
-    readonly_fields = ['name', 'last_name_1', 'last_name_2', 'email', 'phone', 'cellphone', 'dni']
 
 admin.site.register(Patient, PatientAdmin)
