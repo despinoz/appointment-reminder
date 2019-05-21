@@ -79,6 +79,7 @@ LOCAL_APPS = [
     "animus.core.apps.CoreConfig",
     "animus.patients.apps.PatientsConfig",
     "animus.providers.apps.ProvidersConfig",
+    "animus.appointments.apps.AppointmentsConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
