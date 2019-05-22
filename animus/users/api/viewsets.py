@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 
-from animus.users.permissions import IsUserOrReadOnly
+from animus.users.permissions import IsUser
 from animus.users.api.serializers import CreateUserSerializer, UserSerializer
 
 
@@ -16,7 +16,7 @@ class UserViewSet(mixins.RetrieveModelMixin,
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsUserOrReadOnly,)
+    permission_classes = (IsUser,)
 
 
 class UserCreateViewSet(mixins.CreateModelMixin,
