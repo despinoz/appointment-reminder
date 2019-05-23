@@ -1,5 +1,6 @@
 const Index = () => {
   const today = new Date()
+  const spanishWeekDays = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab']
 
   const findNearMonday = function(date) {
     const monday = new Date()
@@ -18,16 +19,28 @@ const Index = () => {
     return week
   }
 
+  // const monday = findNearMonday(today)
   const week = findWeek(findNearMonday(today))
+
+  const prevWeek = function(monday) {
+    const prevMonday = new Date()
+    prevMonday.setDate(date.getDate() - 7)
+  }
 
   return (
     <div>
       <h1> Appointment reminder</h1>
-      <ul>
+      <button onClick={() => console.log('hi')}>prev week</button>
+      <div>{JSON.stringify(week[0].getDate())}</div>
+      <button>next week</button>
+      <div>
         {week.map(day => (
-          <li>{JSON.stringify(day)}</li>
+          <div key={day}>
+            <div>{spanishWeekDays[day.getDay()] + ' ' + day.getDate()}</div>
+            {/* <button>añadir cita</button> */}
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
