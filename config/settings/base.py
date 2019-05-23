@@ -52,12 +52,6 @@ ROOT_URLCONF = "config.urls"
 # https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = "config.wsgi.application"
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-}
-
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
@@ -73,6 +67,8 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "rest_framework",
+    "rest_framework.authtoken",
+    'rest_auth',
 ]
 LOCAL_APPS = [
     "animus.users.apps.UsersAppConfig",
