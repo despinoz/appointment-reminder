@@ -11,6 +11,6 @@ class AppointmentAdminForm(forms.ModelForm):
 
 class AppointmentAdmin(admin.ModelAdmin):
     form = AppointmentAdminForm
-    list_display = ['name', 'date', 'start_time', 'end_time']
+    list_display = ['provider', 'patient', 'date', 'start_time', 'end_time']
 
 admin.site.register(Appointment, AppointmentAdmin)

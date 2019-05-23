@@ -18,7 +18,9 @@ class Provider(BaseUUIDModel):
     specialty = models.CharField(max_length=50, blank=True)
     other_specialty = models.CharField(max_length=50, blank=True)
 
-    users = models.ManyToManyField(User, through='ProviderManager', related_name='providers')
+    users = models.ManyToManyField(
+        User,
+        through='ProviderManager', related_name='providers')
 
     def __str__(self):
         return u'%s' % self.name
@@ -27,6 +29,6 @@ class Provider(BaseUUIDModel):
 class ProviderManager(BaseUUIDModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE)
-    
+
     def __str__(self):
         return "%s can manage %s" % (self.user, self.provider)
