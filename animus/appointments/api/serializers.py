@@ -9,7 +9,8 @@ class AppointmentSerializer(serializers.ModelSerializer):
         model = models.Appointment
         fields = (
             'pk', 
-            'name', 
+            'provider', 
+            'patient',
             'date', 
             'start_time', 
             'end_time', 
