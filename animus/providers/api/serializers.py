@@ -17,5 +17,4 @@ class ProviderSerializer(serializers.ModelSerializer):
             'nro_especialista', 
             'specialty', 
             'other_specialty', 
-            'profession', 
         )
