@@ -5,12 +5,15 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 from rest_framework.routers import DefaultRouter
+from rest_framework_swagger.views import get_swagger_view
 
 from animus.appointments.urls import router as appointmentsRouter
 from animus.patients.urls import router as patientsRouter
 from animus.providers.urls import router as providersRouter
 from animus.users.urls import router as usersRouter
 
+
+schema_view = get_swagger_view(title='CitaSimpleAPI')
 
 router = DefaultRouter()
 router.registry.extend(appointmentsRouter.registry)
@@ -51,6 +54,7 @@ if settings.DEBUG:
             kwargs={"exception": Exception("Page not Found")},
         ),
         path("500/", default_views.server_error),
+        path("api-docs/", schema_view),
     ]
     if "debug_toolbar" in settings.INSTALLED_APPS:
         import debug_toolbar
