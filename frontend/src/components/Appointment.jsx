@@ -76,6 +76,7 @@ class CreateAppointment extends React.Component {
           <label htmlFor="">
             Provide:
             <select name="" id="" onChange={this.handleChange}>
+              <option value="" />
               {providers.map(provider => (
                 <option key={provider.pk} value={provider.pk}>
                   {provider.known_as}
@@ -87,6 +88,7 @@ class CreateAppointment extends React.Component {
           <label htmlFor="">
             Patien:
             <select name="" id="" onChange={this.handleChange}>
+              <option value="" />
               {patients.map(patient => (
                 <option key={patient.id} value={patient.id}>
                   {patient.name}
