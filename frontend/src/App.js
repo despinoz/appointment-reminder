@@ -1,4 +1,5 @@
 import React from 'react';
+import Day from './components/Day';
 
 class App extends React.Component {
   constructor() {
@@ -57,7 +58,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { currentWeek } = this.state;
+    const { currentWeek, user } = this.state;
     return (
       <div>
         <header>
@@ -70,12 +71,11 @@ class App extends React.Component {
         <button onClick={() => this.nextWeek(this.state.monday)}>next</button>
         <div>
           {currentWeek.map(day => (
-            <div key={day}>
-              <div>
-                {this.state.spanishWeekDays[day.getDay()] + ' ' + day.getDate()}
-              </div>
-              <button>crear cita</button>
-            </div>
+            <Day
+              key={day}
+              day={day}
+              spanishWeekDays={this.state.spanishWeekDays}
+            />
           ))}
         </div>
       </div>
