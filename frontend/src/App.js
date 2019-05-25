@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Day from './components/Day';
 
 class App extends React.Component {
@@ -8,6 +9,12 @@ class App extends React.Component {
       today: new Date(),
       monday: new Date(),
       spanishWeekDays: ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'],
+      user: {
+        pk: 3,
+        email: 'cpereyra@qwe.com',
+        first_name: 'Carlos',
+        last_name: 'Pereyra'
+      },
       citas: [],
       currentWeek: []
     };
@@ -15,6 +22,21 @@ class App extends React.Component {
 
   componentDidMount() {
     this.findNearMonday(this.state.today);
+    // NEEDS TO ENABLE CORST IN THE BE
+    // this.getUser();
+  }
+
+  getUser() {
+    axios
+      .get('http://localhost:8000/api/v1/auth/user/')
+      .then(function(response) {
+        console.log(response);
+        // ADD ACTIONS WITH RESPONSE
+      })
+      .catch(function(error) {
+        console.log(error);
+        // ADD ACTIONS WITH ERRORS
+      });
   }
 
   findNearMonday(date) {
@@ -63,6 +85,7 @@ class App extends React.Component {
       <div>
         <header>
           <h1>Recordatorio de Citas</h1>
+          <h3>Hola {user.first_name}</h3>
         </header>
         <hr />
         <h2>Citas</h2>
