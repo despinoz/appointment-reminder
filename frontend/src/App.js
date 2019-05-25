@@ -14,9 +14,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.findNearMonday(this.state.today);
-    this.findWeek(this.state.monday);
   }
-
 
   findNearMonday(date) {
     const monday = new Date();
@@ -25,6 +23,7 @@ class App extends React.Component {
     this.setState({
       monday
     });
+    this.findWeek(monday);
   }
 
   findWeek(monday) {
@@ -39,19 +38,36 @@ class App extends React.Component {
     });
   }
 
+  prevWeek(monday) {
+    const prevMonday = new Date();
+    prevMonday.setDate(monday.getDate() - 7);
+    this.setState({
+      monday: prevMonday
+    });
+    this.findWeek(prevMonday);
+  }
+
+  nextWeek(monday) {
+    const nextMonday = new Date();
+    nextMonday.setDate(monday.getDate() + 7);
+    this.setState({
+      monday: nextMonday
+    });
+    this.findWeek(nextMonday);
+  }
+
   render() {
-    const { currentWeek, user } = this.state;
+    const { currentWeek } = this.state;
     return (
       <div>
         <header>
           <h1>Recordatorio de Citas</h1>
-        <h1>Appointment Reminder</h1>
         </header>
         <hr />
         <h2>Citas</h2>
-        <button>prev</button>
+        <button onClick={() => this.prevWeek(this.state.monday)}>prev</button>
         <div>CURRET WEEK</div>
-        <button>next</button>
+        <button onClick={() => this.nextWeek(this.state.monday)}>next</button>
         <div>
           {currentWeek.map(day => (
             <div key={day}>
@@ -68,4 +84,3 @@ class App extends React.Component {
 }
 
 export default App;
-
